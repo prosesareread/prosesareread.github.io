@@ -18,11 +18,11 @@ title: "All Writing"
         {{ post.date | date: "%B %-d, %Y" }}
         {% if post.category %} · {{ post.category }}{% endif %}
       </div>
-      {% if post.excerpt %}
-        <p style="margin: 6px 0 0; font-size: 0.93rem; color: #5c524c;">
-          {{ post.excerpt | strip_html | truncate: 120 }}
-        </p>
-      {% endif %}
+{% if post.excerpt %}
+  <div style="margin: 6px 0 0; font-size: 0.93rem; color: #5c524c; white-space: pre-line;">
+    {{ post.excerpt | markdownify }}
+  </div>
+{% endif %}
     </li>
   {% endfor %}
 </ul>
