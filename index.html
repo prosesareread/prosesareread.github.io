@@ -1,63 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Writing</title>
-    <style>
-        body {
-            font-family: Georgia, serif;
-            margin: 0;
-            padding: 0;
-            background: #fdfdfd;
-            color: #222;
-        }
-        header {
-            background: #222;
-            color: #fdfdfd;
-            padding: 15px 20px;
-            text-align: center;
-            font-size: 1.6em;
-        }
-        .container {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 0 20px;
-            line-height: 1.7em;
-            font-size: 1.1em;
-        }
-        h2 {
-            margin-top: 40px;
-        }
-        footer {
-            text-align: center;
-            padding: 15px;
-            margin-top: 50px;
-            color: #777;
-            font-size: 0.9em;
-        }
-    </style>
-</head>
-<body>
+---
+layout: default
+title: "All Writing"
+---
 
-<header>My Writing</header>
+<h1 style="font-size: 1.5rem; margin-top: 0;">All Writing</h1>
+<p style="margin-top: 4px; font-size: 0.95rem; color: #8a7f78;">
+  Newest pieces first.
+</p>
 
-<div class="container">
-    <h2>Example Poem</h2>
-    <p>
-        The moon remembers<br>
-        secrets the ocean told it —<br>
-        and still pulls the tides.
-    </p>
+<ul style="list-style: none; padding: 0; margin-top: 24px;">
+  {% for post in site.posts %}
+    <li style="margin-bottom: 18px;">
+      <a href="{{ post.url | relative_url }}" style="font-weight: 600; font-size: 1.02rem;">
+        {{ post.title }}
+      </a>
+      <div style="font-size: 0.85rem; color: #8a7f78; margin-top: 2px;">
+        {{ post.date | date: "%B %-d, %Y" }}
+        {% if post.category %} · {{ post.category }}{% endif %}
+      </div>
+      {% if post.excerpt %}
+        <p style="margin: 6px 0 0; font-size: 0.93rem; color: #5c524c;">
+          {{ post.excerpt | strip_html | truncate: 120 }}
+        </p>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
 
-    <h2>Short Story Excerpt</h2>
-    <p>
-       The train doors opened with a sigh, as though they were exhausted from carrying everyone’s expectations all day...
-    </p>
-
-</div>
-
-<footer>© 2025 My Writing</footer>
-
-</body>
-</html>
+{% if site.posts == empty %}
+  <p>You haven't added any pieces yet. Create your first one in the <code>_posts</code> folder.</p>
+{% endif %}
