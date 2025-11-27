@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<article>
+  <header>
+    <h1 style="font-size: 1.7rem; margin-bottom: 0.25rem;">{{ page.title }}</h1>
+    <p style="margin: 0; font-size: 0.85rem; color: #8a7f78;">
+      {{ page.date | date: "%B %-d, %Y" }}
+      {% if page.category %}
+        · {{ page.category }}
+      {% endif %}
+    </p>
+  </header>
+
+  <hr style="margin: 18px 0 24px; border: none; border-top: 1px solid rgba(0,0,0,0.06);">
+
+  <div class="post-body" style="line-height: 1.8; font-size: 1.02rem;">
+    {{ content }}
+  </div>
+
+  <p style="margin-top: 32px; font-size: 0.9rem;">
+    <a href="{{ site.baseurl }}/">← Back to all writing</a>
+  </p>
+</article>
