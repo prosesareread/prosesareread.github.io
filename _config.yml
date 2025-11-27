@@ -1,4 +1,9 @@
-title: My Writing
-theme: minima
-minima:
-  skin: dark
+title: "the way I order the words"
+description: "reflections"
+timezone: "America/New_York"
+
+url: "https://prosesareread.github.io"
+baseurl: ""  # or "" if it's your main user site
+
+markdown: kramdown
+theme: null
