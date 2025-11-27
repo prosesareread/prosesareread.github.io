@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Simple, clean typography-focused design -->
+  <style>
+    :root {
+      --bg: #f6f3ec;
+      --bg-card: #ffffff;
+      --text-main: #262220;
+      --text-muted: #7a6f69;
+      --accent: #b07a5e;
+      --accent-soft: rgba(176, 122, 94, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #fdfaf5 0, #f6f3ec 55%, #f0ebe3 100%);
+      color: var(--text-main);
+    }
+
+    header {
+      padding: 24px 16px 8px;
+      text-align: center;
+    }
+
+    .site-title {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .site-description {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 24px auto 40px;
+      padding: 0 16px 32px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 26px 24px 30px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 14px;
+      font-size: 0.9rem;
+    }
+    .nav a {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-muted);
+    }
+    .nav a.nav-active {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="site-title">{{ site.title }}</div>
+  <div class="site-description">{{ site.description }}</div>
+  <nav class="nav">
+    <a href="{{ site.baseurl }}/" class="{% if page.url == '/' %}nav-active{% endif %}">All writing</a>
+    <!-- You can add more links later, e.g. to /about/ -->
+  </nav>
+</header>
+
+<main class="wrapper">
+  <section class="card">
+    {{ content }}
+  </section>
+</main>
+
+<footer>
+  © {{ "now" | date: "%Y" }} {{ site.title }}
+</footer>
+
+</body>
+</html>
